@@ -47,6 +47,12 @@ class PostRouter {
     }
 
     routes() {
-
+        this.router.get('/', this.GetPosts);
     }
 }
+
+//export
+const postRoutes = new PostRouter();
+postRoutes.routes();
+
+export default postRoutes.router;
