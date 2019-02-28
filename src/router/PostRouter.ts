@@ -11,6 +11,23 @@ class PostRouter {
 
     public GetPosts(req: Request, res: Response): void {
 
+        Post.find({}).then((data) => {
+
+            const status = res.statusCode;
+
+            res.json({
+                status,
+                data
+            });
+
+        }).catch((err) => {
+
+            const status = res.statusCode;
+            res.json({
+                status,
+                err
+            })
+        })
     }
 
     public GetPost(req: Request, res: Response): void {
