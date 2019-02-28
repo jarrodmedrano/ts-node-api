@@ -32,7 +32,6 @@ class Server {
         this.app.use(logger('dev'));
         this.app.use(compression());
         this.app.use(cors());
-
     }
 
     public routes(): void {
