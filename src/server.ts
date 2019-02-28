@@ -19,9 +19,17 @@ export default class Server {
     }
 
     public config() {
+
         //set up mongoose
         const MONGO_URI = 'mongodb://localhost/test';
-        mongoose.connect(MONGO_URI || process.env.MONGODB_URI)
+        mongoose.connect(MONGO_URI || process.env.MONGODB_URI);
+
+        //config
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({extended: true}))
+        this.app.use(helmet());
+        this.app.use(logger('dev'));
+
     }
 
     routes() {
