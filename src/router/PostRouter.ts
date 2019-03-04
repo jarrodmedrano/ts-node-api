@@ -126,7 +126,7 @@ class PostRouter {
         this.router.get('/:slug', this.GetPost);
         this.router.post('/', this.CreatePost);
         this.router.put('/', this.UpdatePost);
-        this.router.get('/:slug', this.DeletePost);
+        this.router.delete('/:slug', this.DeletePost);
     }
 }
 
