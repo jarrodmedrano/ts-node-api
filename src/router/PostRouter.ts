@@ -32,6 +32,25 @@ class PostRouter {
 
     public GetPost(req: Request, res: Response): void {
 
+        const slug: string = req.params.slug;
+
+        Post.findOne({ slug }).then((data) => {
+
+            const status = res.statusCode;
+
+            res.json({
+                status,
+                data
+            });
+
+        }).catch((err) => {
+
+            const status = res.statusCode;
+            res.json({
+                status,
+                err
+            })
+        })
     }
 
     public CreatePost(req: Request, res: Response): void {
