@@ -31,18 +31,14 @@ class UserRouter {
     }
 
     public GetUser(req: Request, res: Response): void {
-
         const username: string = req.params.username;
 
-        User.findOne({ username }).then((data) => {
-
+        User.findOne({ username }).populate('posts', 'title content').then((data) => {
             const status = res.statusCode;
-
             res.json({
                 status,
                 data
-            });
-
+            })
         }).catch((err) => {
 
             const status = res.statusCode;
@@ -58,13 +54,15 @@ class UserRouter {
         const username: string = req.body.username;
         const email: string = req.body.email;
         const password: string = req.body.password;
+        const posts: string[] = req.body.posts;
 
 
         const post = new User({
             user,
             username,
             email,
-            password
+            password,
+            posts
         });
 
         post.save()

@@ -26,10 +26,10 @@ let UserSchema: Schema = new Schema({
         default: '',
         required: true
     },
-    featuredImage: {
-        type: String,
-        default: ''
-    }
+    posts: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Post'
+    }]
 });
 
 export default model('Post', UserSchema);
